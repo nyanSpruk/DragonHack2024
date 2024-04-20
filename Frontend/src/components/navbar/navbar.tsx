@@ -10,7 +10,9 @@ const Navbar = () => {
     return (
         <div className="border-b">
             <div className="flex h-16 items-center px-4">
-                <div>PODJETJE</div>
+                <div>
+                    <a href="/">Podjetje</a>
+                </div>
                 <div className="ml-auto">
                     <NavigationMenu>
                         <NavigationMenuList>
