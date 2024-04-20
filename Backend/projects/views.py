@@ -11,7 +11,6 @@ class ProjektCreateView(generics.CreateAPIView):
     serializer_class = ProjektSerializer
 
 
-
 class PredmetCreateView(generics.CreateAPIView):
     queryset = Predmet.objects.all()
     serializer_class = PredmetSerializer
@@ -62,3 +61,14 @@ class TagDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ProjektDetailView(generics.RetrieveAPIView):
     queryset = Projekt.objects.all()
     serializer_class = ProjektSerializer
+
+class ProjectsBySubjectListView(generics.ListAPIView):
+    serializer_class = ProjektSerializer
+
+    def get_queryset(self):
+        """
+        This view returns a list of all projects for a particular subject
+        identified by the 'predmet_id' in the URL.
+        """
+        predmet_id = self.kwargs['predmet_id']
+        return Projekt.objects.filter(predmet__id=predmet_id)
