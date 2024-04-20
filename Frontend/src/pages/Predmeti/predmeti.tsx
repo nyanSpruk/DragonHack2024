@@ -1,7 +1,6 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, Link } from "@/components/ui/card";
 
 export default function Predmeti() {
-// create json data array of objects with name subject
   const subjects = [
     {
       name: 'Matematika',
@@ -42,21 +41,23 @@ export default function Predmeti() {
   ];
 
   return (
-    <div >
-      <h1 >Predmeti</h1>
-      <div className="flex gap-8 ">
+    <div>
+      <h1>Predmeti</h1>
+      <div className="flex gap-8">
         {subjects.map((subject) => (
-          <Card key={subject.id} className="w-1/2">
-            <CardHeader >
-              <h3 >{subject.id}</h3>
+          <Link key={subject.id} to={`/predmeti/${subject.id}`} className="w-1/2">
+            <Card>
+              <CardHeader>
+                <h3>{subject.id}</h3>
               </CardHeader>
-              <CardContent >
-              <h2 >{subject.name}</h2>
-                <p >Opis predmeta</p>
+              <CardContent>
+                <h2>{subject.name}</h2>
+                <p>Opis predmeta</p>
               </CardContent>
-          </Card>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>
-  )
+  );
 }
