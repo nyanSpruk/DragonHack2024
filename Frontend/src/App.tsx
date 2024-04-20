@@ -9,14 +9,16 @@ import Login from './pages/login/login';
 function App() {
     return (
         <BrowserRouter>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/predmeti" element={<Predmeti />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
+            <div className="h-screen">
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/predmeti" element={<Predmeti />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </div>
         </BrowserRouter>
     );
 }
