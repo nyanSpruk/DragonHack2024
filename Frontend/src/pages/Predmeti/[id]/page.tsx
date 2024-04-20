@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
+import { useParams } from 'react-router-dom';
 
-function Description() {
+function Predmet() {
+    const { id } = useParams();
+
     const data = {
         id: '1',
         title: 'Astra AI: Optimizing Prompts for Mathematical Problem Solving',
@@ -12,20 +15,22 @@ function Description() {
     };
 
     return (
-        <div>
-            <h1 className="text-2xl font-bold">{data.title}</h1>
-            <br></br>
-            <h2 className="text-xl font-semibold">Overview</h2>
-            <p>{data.overview}</p>
-            <br></br>
-            <h2 className="text-xl font-semibold">Objective:</h2>
-            <p>{data.objective}</p>
-            <br></br>
-            <p>Email: {data.email}</p>
-            <br></br>
-            <Button>Apply for project</Button>
+        <div className="flex flex-col items-center justify-center">
+            <div className="p-8 sm:w-2/3 ">
+                <h1 className="text-2xl font-bold">{data.title}</h1>
+                <br></br>
+                <h2 className="text-xl font-semibold">Overview</h2>
+                <p>{data.overview}</p>
+                <br></br>
+                <h2 className="text-xl font-semibold">Objective:</h2>
+                <p>{data.objective}</p>
+                <br></br>
+                <p>Email: {data.email}</p>
+                <br></br>
+                <Button>Apply for project</Button>
+            </div>
         </div>
     );
 }
 
-export default Description;
+export default Predmet;
