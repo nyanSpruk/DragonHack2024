@@ -1,6 +1,7 @@
 from rest_framework import generics
 from .models import User, Projekt, Predmet, College, Tag
-from .serializers import UserSerializer, ProjektSerializer, PredmetSerializer, CollegeSerializer, TagSerializer
+from .serializers import UserSerializer, ProjektSerializer, PredmetSerializer, CollegeSerializer, TagSerializer, ProjektSerializer2
+from django.db.models import Prefetch
 
 class UserListCreateView(generics.ListCreateAPIView):
     queryset = User.objects.all()
@@ -63,7 +64,7 @@ class ProjektDetailView(generics.RetrieveAPIView):
     serializer_class = ProjektSerializer
 
 class ProjectsBySubjectListView(generics.ListAPIView):
-    serializer_class = ProjektSerializer
+    serializer_class = ProjektSerializer2
 
     def get_queryset(self):
         """
@@ -71,4 +72,6 @@ class ProjectsBySubjectListView(generics.ListAPIView):
         identified by the 'predmet_id' in the URL.
         """
         predmet_id = self.kwargs['predmet_id']
-        return Projekt.objects.filter(predmet__id=predmet_id)
+        return Projekt.objects.filter(predmet__id=predmet_id).prefetch_related(
+            Prefetch('tags', queryset=Tag.objects.all()),
+        ).select_related('created_by', 'predmet', 'predmet__college')

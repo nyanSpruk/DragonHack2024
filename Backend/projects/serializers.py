@@ -2,15 +2,13 @@
 from rest_framework import serializers
 from .models import User, Projekt, Predmet, College, Tag
 
-class ProjektSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Projekt
-        fields = ['id', 'title', 'description', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
+
+
 
 class PredmetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Predmet
-        fields = ['id', 'title', 'description', 'college']
+        fields = ['id', 'title', 'description', 'tags','college']
 
 class CollegeSerializer(serializers.ModelSerializer):
     subjects = PredmetSerializer(many=True, read_only=True)
@@ -31,5 +29,19 @@ class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ['id', 'name']
+    
+class ProjektSerializer2(serializers.ModelSerializer):
+    tags = TagSerializer(many=True, read_only=True)
+    created_by = UserSerializer(read_only=True)
+    predmet = PredmetSerializer(read_only=True)
+    faks = serializers.StringRelatedField()  # This assumes that College has a __str__ method defined
 
+    class Meta:
+        model = Projekt
+        fields = ['id', 'title', 'description', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
+
+class ProjektSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Projekt
+        fields = ['id', 'title', 'description', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
 
