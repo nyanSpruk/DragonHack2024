@@ -11,6 +11,8 @@ urlpatterns = [
     path('colleges/<int:pk>/', views.CollegeDetailView.as_view(), name='college-detail'),
     path('tags/', views.TagListCreateView.as_view(), name='tag-list-create'),
     path('tags/<int:pk>/', views.TagDetailView.as_view(), name='tag-detail'),
+    path('projects/<int:pk>/', views.ProjektDetailView.as_view(), name='project-detail'),
+    # Include other URLs as needed
 ]
 
 
