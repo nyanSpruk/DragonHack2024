@@ -1,41 +1,35 @@
+import { cn } from '@/lib/utils';
+import {
+    NavigationMenu,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
     return (
-        <nav className="bg-gray-800 text-white p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <div className="text-lg font-bold">
-                    <a href="/" className="hover:text-gray-300">
-                        Logo
-                    </a>
-                </div>
-                <ul className="flex space-x-4">
-                    <li>
-                        <a href="/" className="hover:text-gray-300">
+        <NavigationMenu>
+            <NavigationMenuList>
+                <NavigationMenuItem>
+                    <Link to="/">
+                        <NavigationMenuLink
+                            className={navigationMenuTriggerStyle()}>
                             Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/about" className="hover:text-gray-300">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/predmeti" className="hover:text-gray-300">
-                            Predmeti
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact" className="hover:text-gray-300">
-                            Contact
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/login" className="hover:text-gray-300">
+                        </NavigationMenuLink>
+                    </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <a href="/login">
+                        <NavigationMenuLink
+                            className={navigationMenuTriggerStyle()}>
                             Login
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                        </NavigationMenuLink>
+                    </a>
+                </NavigationMenuItem>
+            </NavigationMenuList>
+        </NavigationMenu>
     );
 };
 
