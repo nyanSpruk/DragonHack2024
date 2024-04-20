@@ -28,6 +28,11 @@ const Navbar = () => {
                             Contact
                         </a>
                     </li>
+                    <li>
+                        <a href="/login" className="hover:text-gray-300">
+                            Login
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
