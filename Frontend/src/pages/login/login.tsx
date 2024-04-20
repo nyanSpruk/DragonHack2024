@@ -33,7 +33,7 @@ function Login() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button>Save changes</Button>
+                <Button>Login</Button>
               </CardFooter>
             </Card>
           </TabsContent>
@@ -76,7 +76,7 @@ function Login() {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button>Save password</Button>
+                <Button>Create Account</Button>
               </CardFooter>
             </Card>
           </TabsContent>
