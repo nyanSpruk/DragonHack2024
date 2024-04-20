@@ -1,19 +1,20 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from './components/ui/card';
 import { Button } from './components/ui/button';
+import Predmeti from './pages/Predmeti/predmeti';
 
 function App() {
     const [count, setCount] = useState(0);
+    const HelloWorld = () => {
+        console.log('Hello World');
+    }
 
     return (
         <>
@@ -23,7 +24,8 @@ function App() {
                     <CardDescription>Card Description</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <Button onClick={() => setCount((count) => count + 1)}>
+                    <div>Card content is here</div>
+                    <Button onClick={   HelloWorld}>
                         count is {count}
                     </Button>
                     <p className="">
@@ -31,6 +33,7 @@ function App() {
                     </p>
                 </CardContent>
             </Card>
+            <Predmeti />
         </>
     );
 }
