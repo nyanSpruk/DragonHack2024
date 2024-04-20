@@ -10,8 +10,7 @@ class ProjektCreateView(generics.CreateAPIView):
     queryset = Projekt.objects.all()
     serializer_class = ProjektSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+
 
 class PredmetCreateView(generics.CreateAPIView):
     queryset = Predmet.objects.all()
@@ -59,3 +58,7 @@ class TagListCreateView(generics.ListCreateAPIView):
 class TagDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+
+class ProjektDetailView(generics.RetrieveAPIView):
+    queryset = Projekt.objects.all()
+    serializer_class = ProjektSerializer
