@@ -4,6 +4,7 @@ import About from './pages/about/about';
 import Navbar from './components/navbar/navbar';
 import NotFound from './components/notfound/notfound';
 import Predmeti from './pages/Predmeti/predmeti';
+import Description from './pages/description/description';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/predmeti" element={<Predmeti />} />
+                <Route path="/description" element={<Description />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
