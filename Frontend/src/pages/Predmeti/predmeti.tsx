@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, Link } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 export default function Predmeti() {
   const subjects = [
