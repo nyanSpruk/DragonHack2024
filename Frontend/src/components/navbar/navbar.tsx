@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils';
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -6,30 +5,36 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <NavigationMenu>
-            <NavigationMenuList>
-                <NavigationMenuItem>
-                    <Link to="/">
-                        <NavigationMenuLink
-                            className={navigationMenuTriggerStyle()}>
-                            Home
-                        </NavigationMenuLink>
-                    </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <a href="/login">
-                        <NavigationMenuLink
-                            className={navigationMenuTriggerStyle()}>
-                            Login
-                        </NavigationMenuLink>
-                    </a>
-                </NavigationMenuItem>
-            </NavigationMenuList>
-        </NavigationMenu>
+        <div className="border-b">
+            <div className="flex h-16 items-center px-4">
+                <div>PODJETJE</div>
+                <div className="ml-auto">
+                    <NavigationMenu>
+                        <NavigationMenuList>
+                            <NavigationMenuItem>
+                                <a href="/login">
+                                    <NavigationMenuLink
+                                        className={navigationMenuTriggerStyle()}>
+                                        Login
+                                    </NavigationMenuLink>
+                                </a>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <a href="/predmeti">
+                                    <NavigationMenuLink
+                                        className={navigationMenuTriggerStyle()}>
+                                        Predmeti
+                                    </NavigationMenuLink>
+                                </a>
+                            </NavigationMenuItem>
+                        </NavigationMenuList>
+                    </NavigationMenu>
+                </div>
+            </div>
+        </div>
     );
 };
 
