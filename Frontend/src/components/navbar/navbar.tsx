@@ -19,6 +19,11 @@ const Navbar = () => {
                         </a>
                     </li>
                     <li>
+                        <a href="/predmeti" className="hover:text-gray-300">
+                            Predmeti
+                        </a>
+                    </li>
+                    <li>
                         <a href="/contact" className="hover:text-gray-300">
                             Contact
                         </a>
