@@ -1,36 +1,42 @@
+import {
+    NavigationMenu,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+
 const Navbar = () => {
     return (
-        <nav className="bg-gray-800 text-white p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <div className="text-lg font-bold">
-                    <a href="/" className="hover:text-gray-300">
-                        Logo
-                    </a>
+        <div className="border-b">
+            <div className="flex h-16 items-center px-4">
+                <div>
+                    <a href="/">Podjetje</a>
                 </div>
-                <ul className="flex space-x-4">
-                    <li>
-                        <a href="/" className="hover:text-gray-300">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/about" className="hover:text-gray-300">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/predmeti" className="hover:text-gray-300">
-                            Predmeti
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/contact" className="hover:text-gray-300">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
+                <div className="ml-auto">
+                    <NavigationMenu>
+                        <NavigationMenuList>
+                            <NavigationMenuItem>
+                                <a href="/login">
+                                    <NavigationMenuLink
+                                        className={navigationMenuTriggerStyle()}>
+                                        Login
+                                    </NavigationMenuLink>
+                                </a>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <a href="/predmeti">
+                                    <NavigationMenuLink
+                                        className={navigationMenuTriggerStyle()}>
+                                        Predmeti
+                                    </NavigationMenuLink>
+                                </a>
+                            </NavigationMenuItem>
+                        </NavigationMenuList>
+                    </NavigationMenu>
+                </div>
             </div>
-        </nav>
+        </div>
     );
 };
 
