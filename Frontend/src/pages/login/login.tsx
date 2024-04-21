@@ -20,12 +20,16 @@ import {
 } from '@/components/ui/select';
 import { setIsLoggedIn } from '@/lib/auth';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 function Login() {
     const navigate = useNavigate();
-
+    const [name, setName] = useState('');
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
+        event.preventDefault();
+        console.log(name);
         setIsLoggedIn(true);
+
         navigate('/predmeti');
         location.reload();
     }
@@ -47,10 +51,15 @@ function Login() {
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="space-y-1">
-                                    <Label htmlFor="username">Username</Label>
+                                    <Label htmlFor="email">Username</Label>
                                     <Input
-                                        id="username"
+                                        onChange={(e) => {
+                                            console.log(e.target.value);
+                                            setName(e.target.value);
+                                        }}
+                                        id="email"
                                         placeholder="Ducklas.Mallard"
+                                        type="email"
                                     />
                                 </div>
                                 <div className="space-y-1">
