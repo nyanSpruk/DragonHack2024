@@ -1,3 +1,5 @@
+import { User } from './types';
+
 // Define constant key for localStorage
 const LOGIN_STATE_KEY = 'isLoggedIn';
 
@@ -5,8 +7,7 @@ const LOGIN_STATE_KEY = 'isLoggedIn';
 let isLogedIn = localStorage.getItem(LOGIN_STATE_KEY) === 'true';
 
 export function setIsLoggedIn(value: boolean) {
-    console.log(value);
-    isLogedIn = value;
+    isLogedIn = true;
     localStorage.setItem(LOGIN_STATE_KEY, value.toString());
 }
 

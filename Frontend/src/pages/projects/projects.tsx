@@ -30,7 +30,7 @@ export default function Projects() {
                         <Button
                             key={project.id}
                             className="w-full h-24"
-                            variant="default">
+                            variant={'outline'}>
                             {project.name}
                         </Button>
                     </a>
