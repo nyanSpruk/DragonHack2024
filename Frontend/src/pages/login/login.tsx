@@ -30,7 +30,11 @@ function Login() {
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
         console.log(name);
-        if (name !== 'student@student.si' && name !== 'zerodays@zerodays.si') {
+        if (
+            name !== 'student@student.si' &&
+            name !== 'zerodays@zerodays.si' &&
+            name !== 'prof@prof.si'
+        ) {
             toast({
                 variant: 'destructive',
                 title: 'Invalid Login',
@@ -39,7 +43,8 @@ function Login() {
             return;
         }
         setIsLoggedIn(name);
-        if (name === 'student@student.si') navigate('/predmeti');
+        if (name === 'student@student.si') navigate('/courses');
+        else if (name === 'prof@prof.si') navigate('/courses');
         else navigate('/projects');
         location.reload();
     }

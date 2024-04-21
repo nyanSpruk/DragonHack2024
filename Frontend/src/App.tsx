@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/home';
-import SubmitProblem from './pages/submitProblem';
+import SubmitChallenge from './pages/submitChallenge';
 import Navbar from './components/navbar/navbar';
 import NotFound from './components/notfound/notfound';
 import Predmeti from './pages/Predmeti/predmeti';
@@ -20,9 +20,12 @@ function App() {
                 <Toaster />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/submitProblem" element={<SubmitProblem />} />
+                    <Route
+                        path="/submitChallenge"
+                        element={<SubmitChallenge />}
+                    />
                     <Route path="/submitProject" element={<SubmitProject />} />
-                    <Route path="/predmeti" element={<Predmeti />} />
+                    <Route path="/courses" element={<Predmeti />} />
                     <Route path="/predmet/:id" element={<Predmet />} />
                     <Route path="/projects/:id" element={<Projects />} />
                     <Route path="/project/:id" element={<Project />} />

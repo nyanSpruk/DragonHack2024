@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="border-b">
             <div className="flex h-16 items-center px-4">
                 <div>
-                    <a href="/">Podjetje</a>
+                    <a href="/">ProjectBridge</a>
                 </div>
                 <div className="ml-auto">
                     <NavigationMenu>
@@ -32,10 +32,10 @@ const Navbar = () => {
                                 getUser() === 'student@student.si' && (
                                     <>
                                         <NavigationMenuItem>
-                                            <a href="/predmeti">
+                                            <a href="/courses">
                                                 <NavigationMenuLink
                                                     className={navigationMenuTriggerStyle()}>
-                                                    Predmeti
+                                                    Courses
                                                 </NavigationMenuLink>
                                             </a>
                                         </NavigationMenuItem>
@@ -44,24 +44,28 @@ const Navbar = () => {
                             {getLogStatus() &&
                                 getUser() === 'zerodays@zerodays.si' && (
                                     <>
-                                        {/* <NavigationMenuItem>
-                                            <a href="/submitProblem">
-                                                <NavigationMenuLink
-                                                    className={navigationMenuTriggerStyle()}>
-                                                    Submit Problem
-                                                </NavigationMenuLink>
-                                            </a>
-                                        </NavigationMenuItem> */}
                                         <NavigationMenuItem>
-                                            <a href="/submitProject">
+                                            <a href="/submitChallenge">
                                                 <NavigationMenuLink
                                                     className={navigationMenuTriggerStyle()}>
-                                                    Submit Project
+                                                    Submit Challenge
                                                 </NavigationMenuLink>
                                             </a>
                                         </NavigationMenuItem>
                                     </>
                                 )}
+                            {getLogStatus() && getUser() === 'prof@prof.si' && (
+                                <>
+                                    <NavigationMenuItem>
+                                        <a href="/submitProject">
+                                            <NavigationMenuLink
+                                                className={navigationMenuTriggerStyle()}>
+                                                Submit Project
+                                            </NavigationMenuLink>
+                                        </a>
+                                    </NavigationMenuItem>
+                                </>
+                            )}
                             {getLogStatus() && (
                                 <>
                                     <NavigationMenuItem>

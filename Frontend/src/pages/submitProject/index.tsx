@@ -26,6 +26,7 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CommandList } from 'cmdk';
 import { Check, ChevronsUpDown } from 'lucide-react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -154,34 +155,47 @@ const tags = [
 
 const subject = [
     {
-        value: '1',
-        label: 'Programming Fundamentals',
+        id: '1',
+        name: 'Programming Fundamentals',
     },
     {
-        value: '2',
-        label: 'Data Structures and Algorithms',
+        id: '2',
+        name: 'Data Structures and Algorithms',
     },
     {
-        value: '3',
-        label: 'Computer Systems and Architecture',
+        id: '3',
+        name: 'Computer Systems and Architecture',
     },
     {
-        value: '4',
-        label: 'Operating Systems',
+        id: '4',
+        name: 'Operating Systems',
     },
     {
-        value: '5',
-        label: 'Database Systems',
+        id: '5',
+        name: 'Database Systems',
     },
     {
-        value: '6',
-        label: 'Computer Networks',
+        id: '6',
+        name: 'Computer Networks',
     },
     {
-        value: '7',
-        label: 'Software Engineering',
+        id: '7',
+        name: 'Software Engineering',
     },
 ];
+
+// type Subject = {
+//     id: string;
+//     name: string;
+// };
+// //  Fetch subjects from backend http://localhost:8000/api/tags_get/
+// const [subject, setSubject] = useState<Subject[]>([]);
+// fetch('http://localhost:8000/api/tags_get/')
+//     .then((response) => response.json())
+//     .then((data) => {
+//         setSubject(data);
+//         console.log(subject);
+//     });
 
 const formSchema = z.object({
     name: z.string().min(1).max(100),
@@ -204,46 +218,32 @@ function SubmitProject() {
         },
     });
     function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
         console.log(values);
 
-        // send the data to http://127.0.0.1:8000/api/project_add/
-        // this is the format that the api expects
-        // {
-        //     "title": "",
-        //     "description": "",
-        //     "podjetje": "",
-        //     "tags": [],
-        //     "faks": null,
-        //     "created_by": null,
-        //     "predmet": null
-        // }
+        // let outputData = {
+        //     title: values.name,
+        //     description: values.description,
+        //     podjetje: 'prof',
+        //     tags: values.tags,
+        //     faks: values.fakulteta,
+        //     created_by: 1,
+        //     predmet: values.subject,
+        // };
 
-        let outputData = {
-            title: values.name,
-            description: values.description,
-            podjetje: 'zeroDays',
-            tags: values.tags,
-            faks: values.fakulteta,
-            created_by: 1,
-            predmet: values.subject,
-        };
-
-        fetch('http://127.0.0.1:8000/api/project_add/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(outputData),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        // fetch('http://127.0.0.1:8000/api/project_add/', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(outputData),
+        // })
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log('Success:', data);
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //     });
     }
     return (
         <div className="justify-items-center">
@@ -373,9 +373,9 @@ function SubmitProject() {
                                                     {field.value
                                                         ? subject.find(
                                                               (subject) =>
-                                                                  subject.value ===
+                                                                  subject.id ===
                                                                   field.value
-                                                          )?.label
+                                                          )?.name
                                                         : 'Select subject'}
                                                     <ChevronsUpDown className="ml-2 h-4 w-fit shrink-0 opacity-50" />
                                                 </Button>
@@ -392,31 +392,31 @@ function SubmitProject() {
                                                             (subject) => (
                                                                 <CommandItem
                                                                     value={
-                                                                        subject.label
+                                                                        subject.name
                                                                     }
                                                                     key={
-                                                                        subject.value
+                                                                        subject.id
                                                                     }
                                                                     onSelect={() => {
                                                                         form.setValue(
                                                                             'subject',
-                                                                            subject.value
+                                                                            subject.id
                                                                         );
                                                                         console.log(
-                                                                            subject.value
+                                                                            subject.id
                                                                         );
                                                                     }}>
                                                                     <Check
                                                                         className={cn(
                                                                             'mr-2 h-4 w-fit',
-                                                                            subject.value ===
+                                                                            subject.id ===
                                                                                 field.value
                                                                                 ? 'opacity-100'
                                                                                 : 'opacity-0'
                                                                         )}
                                                                     />
                                                                     {
-                                                                        subject.label
+                                                                        subject.name
                                                                     }
                                                                 </CommandItem>
                                                             )
