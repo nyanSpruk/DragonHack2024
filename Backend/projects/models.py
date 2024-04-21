@@ -1,6 +1,6 @@
 from django.db import models
 
-
+# User model with role-based access control
 class User(models.Model):
     ROLE_CHOICES = (
         ('professor', 'Professor'),
@@ -17,6 +17,7 @@ class User(models.Model):
     def __str__(self):
         return self.username
 
+# College model with name and location
 class College(models.Model):
     name = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
@@ -24,12 +25,14 @@ class College(models.Model):
     def __str__(self):
         return f"{self.name} - {self.location}"
 
+# Tag model with name
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name
 
+# Predmet model with title, description, tags, and college
 class Predmet(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -39,8 +42,7 @@ class Predmet(models.Model):
     def __str__(self):
         return self.title
 
-
-
+# Projekt model with title, description, company, tags, college, created_by, and predmet
 class Projekt(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -52,6 +54,3 @@ class Projekt(models.Model):
 
     def __str__(self):
         return self.title
-
-
-

@@ -1,8 +1,5 @@
-
 from rest_framework import serializers
 from .models import User, Projekt, Predmet, College, Tag
-
-
 
 
 class PredmetSerializer(serializers.ModelSerializer):
