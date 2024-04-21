@@ -198,8 +198,7 @@ function SubmitChallenge() {
                 console.error('Error:', error);
             });
 
-        // Redirect to the challenges page
-        // window.location.href = '/projects';
+        window.location.href = '/projects';
     }
     return (
         <div className="justify-items-center">

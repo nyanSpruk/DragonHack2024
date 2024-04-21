@@ -27,7 +27,7 @@ export default function Predmeti() {
                         <Button
                             key={subject.id}
                             className="w-64 h-24 text-wrap"
-                            variant={'outline'}>
+                            variant={'secondary'}>
                             {subject.title}
                         </Button>
                     </a>

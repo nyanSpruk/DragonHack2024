@@ -9,7 +9,6 @@ function CompanyProjects() {
         fetch('http://localhost:8000/api/predlogs/')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setProjects(data);
             });
     }, []);
@@ -23,7 +22,7 @@ function CompanyProjects() {
                         <Button
                             key={project.id}
                             className="w-64 h-24 text-wrap"
-                            variant={'outline'}>
+                            variant={'secondary'}>
                             {project.title}
                         </Button>
                     </a>

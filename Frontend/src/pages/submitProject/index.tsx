@@ -26,7 +26,6 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CommandList } from 'cmdk';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -184,19 +183,6 @@ const subject = [
     },
 ];
 
-// type Subject = {
-//     id: string;
-//     name: string;
-// };
-// //  Fetch subjects from backend http://localhost:8000/api/tags_get/
-// const [subject, setSubject] = useState<Subject[]>([]);
-// fetch('http://localhost:8000/api/tags_get/')
-//     .then((response) => response.json())
-//     .then((data) => {
-//         setSubject(data);
-//         console.log(subject);
-//     });
-
 const formSchema = z.object({
     name: z.string().min(1).max(100),
     fakulteta: z.string().min(1).max(100),
@@ -220,30 +206,30 @@ function SubmitProject() {
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
 
-        // let outputData = {
-        //     title: values.name,
-        //     description: values.description,
-        //     podjetje: 'prof',
-        //     tags: values.tags,
-        //     faks: values.fakulteta,
-        //     created_by: 1,
-        //     predmet: values.subject,
-        // };
+        let outputData = {
+            title: values.name,
+            description: values.description,
+            podjetje: 'prof',
+            tags: values.tags,
+            faks: values.fakulteta,
+            created_by: 1,
+            predmet: values.subject,
+        };
 
-        // fetch('http://127.0.0.1:8000/api/project_add/', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(outputData),
-        // })
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         console.log('Success:', data);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
+        fetch('http://127.0.0.1:8000/api/project_add/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(outputData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
     return (
         <div className="justify-items-center">
