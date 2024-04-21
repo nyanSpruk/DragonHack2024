@@ -34,7 +34,7 @@ urlpatterns = [
     path('projects/<int:pk>/', views.ProjektDetailView.as_view(), name='project-detail'),
 
     # Get projects by subject
-    path('projects-by-subject/<int:predmet_id>/', views.ProjectsBySubjectListView.as_view(), name='projects-by-subject'),
+    path('challenges-by-subject/<int:predmet_id>/', views.ProjectsBySubjectListView.as_view(), name='projects-by-subject'),
 
     # Get user details based on username
     path('users/<str:username>/', views.UserDetailUpdateView.as_view(), name='user-detail'),
