@@ -5,7 +5,7 @@ import Projects from '../projects/projects';
 
 function Home() {
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex h-screen">
             {/* if not logged in, show loginpage, if logged in and student@student.si show predmeti, else show projects */}
             {getLogStatus() ? (
                 <div>
@@ -16,7 +16,9 @@ function Home() {
                     )}
                 </div>
             ) : (
-                <Login />
+                <div className="justify-center items-center">
+                    <Login />
+                </div>
             )}
         </div>
     );

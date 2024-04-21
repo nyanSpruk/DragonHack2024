@@ -29,7 +29,7 @@ export default function Projects() {
                     <a href={`/project/${project.id}`}>
                         <Button
                             key={project.id}
-                            className="w-full h-24"
+                            className="w-full h-24 text-wrap"
                             variant={'outline'}>
                             {project.name}
                         </Button>

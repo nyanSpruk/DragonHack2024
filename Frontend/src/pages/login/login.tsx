@@ -39,8 +39,8 @@ function Login() {
             return;
         }
         setIsLoggedIn(name);
-
-        navigate('/predmeti');
+        if (name === 'student@student.si') navigate('/predmeti');
+        else navigate('/projects');
         location.reload();
     }
     return (

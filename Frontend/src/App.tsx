@@ -10,6 +10,7 @@ import SubmitProject from './pages/submitProject';
 import Projects from './pages/projects/projects';
 import Project from './pages/projects/[id]/page';
 import { Toaster } from './components/ui/toaster';
+import CompanyProjects from './pages/companyProjects/page';
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/predmet/:id" element={<Predmet />} />
                     <Route path="/projects/:id" element={<Projects />} />
                     <Route path="/project/:id" element={<Project />} />
+                    <Route path="/projects" element={<CompanyProjects />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
