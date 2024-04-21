@@ -160,18 +160,52 @@ const tags = [
     { value: 'wildlife-conservation', label: 'Wildlife Conservation' },
     { value: 'animal-welfare', label: 'Animal Welfare' },
 ];
+
+const subject = [
+    {
+        value: 'programming-fundamentals',
+        label: 'Programming Fundamentals',
+    },
+    {
+        value: 'data-structures-and-algorithms',
+        label: 'Data Structures and Algorithms',
+    },
+    {
+        value: 'computer-systems-and-architecture',
+        label: 'Computer Systems and Architecture',
+    },
+    {
+        value: 'operating-systems',
+        label: 'Operating Systems',
+    },
+    {
+        value: 'database-systems',
+        label: 'Database Systems',
+    },
+    {
+        value: 'computer-networks',
+        label: 'Computer Networks',
+    },
+    {
+        value: 'software-engineering',
+        label: 'Software Engineering',
+    },
+];
+
 const formSchema = z.object({
     name: z.string().min(1).max(100),
     fakulteta: z.string().min(1).max(100),
+    subject: z.string().min(1).max(100),
     tags: z.array(z.string().min(1).max(100)),
-    description: z.string().min(1),
+    description: z.string().min(100),
 });
-function SubmitProblem() {
+function SubmitProject() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: '',
             fakulteta: '',
+            subject: '',
             tags: [],
             description: '',
         },
@@ -193,15 +227,15 @@ function SubmitProblem() {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Problem name</FormLabel>
+                                    <FormLabel>Project name</FormLabel>
                                     <FormControl>
                                         <Input
-                                            placeholder="concise and descriptive, for example: testing smart home solutions"
+                                            placeholder="Enter a descriptive project name that matches its' educational goal."
                                             {...field}
                                         />
                                     </FormControl>
                                     <FormDescription>
-                                        The name of the problem you are
+                                        The name of the project you are
                                         submitting.
                                     </FormDescription>
                                     <FormMessage />
@@ -283,8 +317,87 @@ function SubmitProblem() {
                                         </PopoverContent>
                                     </Popover>
                                     <FormDescription>
-                                        The faculty you are submitting your
-                                        problem to.
+                                        The faculty at which your class is held.
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="subject"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col">
+                                    <FormLabel>Subject</FormLabel>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <FormControl>
+                                                <Button
+                                                    variant="outline"
+                                                    role="combobox"
+                                                    className={cn(
+                                                        'w-fit min-w-52 justify-between',
+                                                        !field.value &&
+                                                            'text-muted-foreground'
+                                                    )}>
+                                                    {field.value
+                                                        ? subject.find(
+                                                              (subject) =>
+                                                                  subject.value ===
+                                                                  field.value
+                                                          )?.label
+                                                        : 'Select subject'}
+                                                    <ChevronsUpDown className="ml-2 h-4 w-fit shrink-0 opacity-50" />
+                                                </Button>
+                                            </FormControl>
+                                        </PopoverTrigger>
+                                        <PopoverContent className="w-[200px] h-[300px] p-0">
+                                            <Command>
+                                                <CommandList className="overflow-y-scroll">
+                                                    <CommandEmpty>
+                                                        No subject found.
+                                                    </CommandEmpty>
+                                                    <CommandGroup>
+                                                        {fakultete.map(
+                                                            (subject) => (
+                                                                <CommandItem
+                                                                    value={
+                                                                        subject.label
+                                                                    }
+                                                                    key={
+                                                                        subject.value
+                                                                    }
+                                                                    onSelect={() => {
+                                                                        form.setValue(
+                                                                            'fakulteta',
+                                                                            subject.value
+                                                                        );
+                                                                        console.log(
+                                                                            subject.value
+                                                                        );
+                                                                    }}>
+                                                                    <Check
+                                                                        className={cn(
+                                                                            'mr-2 h-4 w-fit',
+                                                                            subject.value ===
+                                                                                field.value
+                                                                                ? 'opacity-100'
+                                                                                : 'opacity-0'
+                                                                        )}
+                                                                    />
+                                                                    {
+                                                                        subject.label
+                                                                    }
+                                                                </CommandItem>
+                                                            )
+                                                        )}
+                                                    </CommandGroup>
+                                                </CommandList>
+                                            </Command>
+                                        </PopoverContent>
+                                    </Popover>
+                                    <FormDescription>
+                                        The faculty at which your class is held.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -419,4 +532,4 @@ function SubmitProblem() {
     );
 }
 
-export default SubmitProblem;
+export default SubmitProject;

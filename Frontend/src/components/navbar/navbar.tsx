@@ -40,6 +40,14 @@ const Navbar = () => {
                                     </NavigationMenuLink>
                                 </a>
                             </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <a href="/submitProject">
+                                    <NavigationMenuLink
+                                        className={navigationMenuTriggerStyle()}>
+                                        Submit Project
+                                    </NavigationMenuLink>
+                                </a>
+                            </NavigationMenuItem>
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>

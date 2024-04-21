@@ -6,6 +6,7 @@ import NotFound from './components/notfound/notfound';
 import Predmeti from './pages/Predmeti/predmeti';
 import Login from './pages/login/login';
 import Predmet from './pages/Predmeti/[id]/page';
+import SubmitProject from './pages/submitProject';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/submitProblem" element={<SubmitProblem />} />
+                    <Route path="/submitProject" element={<SubmitProject />} />
                     <Route path="/predmeti" element={<Predmeti />} />
                     <Route path="/predmet/:id" element={<Predmet />} />
                     <Route path="/login" element={<Login />} />
