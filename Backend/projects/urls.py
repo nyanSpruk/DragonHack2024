@@ -50,4 +50,7 @@ urlpatterns = [
     path('subjects_get/', views.PredmetListView.as_view(), name='subject-list'),
 
     path('tags_get/', views.TagListView.as_view(), name='tag-list'),
+
+    path('users/<int:pk>/update-attends-subjects/', views.UserAttendsSubjectUpdateView.as_view(), name='user-update-attends-subjects'),
+
 ]

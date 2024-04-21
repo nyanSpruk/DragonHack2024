@@ -35,10 +35,10 @@ class ProjektSerializer2(serializers.ModelSerializer):
 
     class Meta:
         model = Projekt
-        fields = ['id', 'title', 'description', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
+        fields = ['id', 'title', 'description', 'overview', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
 
 class ProjektSerializer(serializers.ModelSerializer):
     class Meta:
         model = Projekt
-        fields = ['id', 'title', 'description', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
+        fields = ['id', 'title', 'description', 'overview', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
 
