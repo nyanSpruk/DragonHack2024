@@ -2,12 +2,29 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 function Project() {
     const { id } = useParams();
     const { toast } = useToast();
+    const [isDisabled, setIsDisabled] = useState(false);
 
+    const handleClick = () => {
+        // Disable the button
+        setIsDisabled(true);
+
+        // Simulate the toast and other actions
+        toast({
+            variant: 'success',
+            title: 'Application submitted',
+            description:
+                'Your application has been submitted. You will receive an email with further instructions.',
+        });
+
+        // Optionally re-enable the button after some actions or time
+        // setTimeout(() => setIsDisabled(false), 5000); // Re-enable after 5 seconds
+    };
     const data = {
         id: '1',
         title: 'Astra AI: Optimizing Prompts for Mathematical Problem Solving',
@@ -33,15 +50,7 @@ function Project() {
                         <br></br>
                         <p>Email: {data.email}</p>
                         <br></br>
-                        <Button
-                            onClick={() => {
-                                toast({
-                                    variant: 'success',
-                                    title: 'Application submitted',
-                                    description:
-                                        'Your application has been submitted. You will receive an email with further instructions.',
-                                });
-                            }}>
+                        <Button onClick={handleClick} disabled={isDisabled}>
                             Apply for project
                         </Button>
                     </CardContent>
