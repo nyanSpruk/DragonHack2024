@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { useToast } from '@/components/ui/use-toast';
 import { useParams } from 'react-router-dom';
 
 function Project() {
     const { id } = useParams();
+    const { toast } = useToast();
 
     const data = {
         id: '1',
@@ -31,7 +33,17 @@ function Project() {
                         <br></br>
                         <p>Email: {data.email}</p>
                         <br></br>
-                        <Button>Apply for project</Button>
+                        <Button
+                            onClick={() => {
+                                toast({
+                                    variant: 'success',
+                                    title: 'Application submitted',
+                                    description:
+                                        'Your application has been submitted. You will receive an email with further instructions.',
+                                });
+                            }}>
+                            Apply for project
+                        </Button>
                     </CardContent>
                 </Card>
             </div>

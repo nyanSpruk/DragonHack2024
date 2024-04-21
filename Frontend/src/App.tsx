@@ -8,12 +8,14 @@ import Login from './pages/login/login';
 import Predmet from './pages/Predmeti/[id]/page';
 import Projects from './pages/projects/projects';
 import Project from './pages/projects/[id]/page';
+import { Toaster } from './components/ui/toaster';
 
 function App() {
     return (
         <BrowserRouter>
             <div className="h-screen dark">
                 <Navbar />
+                <Toaster />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
