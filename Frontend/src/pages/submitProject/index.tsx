@@ -201,8 +201,6 @@ function SubmitProject() {
             subject: '',
             tags: [],
             description: '',
-            objective: '',
-            email: '',
         },
     });
     function onSubmit(values: z.infer<typeof formSchema>) {
@@ -543,44 +541,11 @@ function SubmitProject() {
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Company Description</FormLabel>
+                                    <FormLabel>Description</FormLabel>
                                     <FormControl>
                                         <Textarea
-                                            placeholder="Briefly describe your company and what you do."
+                                            placeholder="Describe your subject and project in detail to match with the right companies."
                                             className="resize-none"
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="objective"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Objective</FormLabel>
-                                    <FormControl>
-                                        <Textarea
-                                            placeholder="Describe your project in detail to optimize student and class matching."
-                                            className="resize-none"
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            placeholder="example@email.com"
                                             {...field}
                                         />
                                     </FormControl>
