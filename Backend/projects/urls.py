@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+
     # Add user (username, name, role, teaches_subjects, attends_subjects)
     path('user_add/', views.UserListCreateView.as_view(), name='user-list-create'),
 
@@ -38,6 +39,15 @@ urlpatterns = [
     # Get user details based on username
     path('users/<str:username>/', views.UserDetailUpdateView.as_view(), name='user-detail'),
 
+    path('students/<int:pk>/subjects/', views.StudentSubjectsListView.as_view(), name='student-subjects'),
+
+    path('get_colleges/', views.CollegeListView.as_view(), name='college-list'),
+
+    path('challenges/', views.ProjektListView.as_view(), name='challenge-list'),
+
+    path('challenges/<int:pk>/', views.ChallengeDetailView.as_view(), name='challenge-detail'),
+
+    path('subjects_get/', views.PredmetListView.as_view(), name='subject-list'),
+
+    path('tags_get/', views.TagListView.as_view(), name='tag-list'),
 ]
-
-

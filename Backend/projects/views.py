@@ -3,6 +3,9 @@ from .models import User, Projekt, Predmet, College, Tag
 from .serializers import UserSerializer, ProjektSerializer, PredmetSerializer, CollegeSerializer, TagSerializer, ProjektSerializer2
 from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.exceptions import NotFound
 
 # Define a view for listing and creating Users.
 class UserListCreateView(generics.ListCreateAPIView):
@@ -99,3 +102,67 @@ class UserDetailUpdateView(generics.RetrieveUpdateAPIView):
         """
         username = self.kwargs['username']  # Extract the 'username' from the URL parameters.
         return get_object_or_404(User, username=username)  # Return the user instance or raise Http404.
+    
+class StudentSubjectsListView(generics.ListAPIView):
+    serializer_class = PredmetSerializer
+
+    def get_queryset(self):
+        # Fetch the student based on the user ID provided in the URL
+        user_id = self.kwargs['pk']
+        student = User.objects.get(pk=user_id)
+
+        # Ensure the user is a student
+        if student.role != 'student':
+            raise ValueError("This user is not a student.")
+
+        # Return the subjects attended by the student
+        return student.attends_subjects.all()
+
+class AddSubjectToUserView(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()  # Get the user object
+
+        # Check if 'subject_ids' are provided in the request data
+        if 'subject_ids' not in request.data:
+            return Response({'message': 'subject_ids must be provided'}, status=status.HTTP_400_BAD_REQUEST)
+
+        subject_ids = request.data.get('subject_ids')
+
+        try:
+            # Add the provided subjects to the user's attended subjects
+            user.attends_subjects.add(*subject_ids)
+            user.save()
+            return Response({'message': 'Subjects added successfully'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProjektListView(generics.ListAPIView):
+    queryset = Projekt.objects.all()  # Fetch all projects from the database
+    serializer_class = ProjektSerializer  # Use the serializer to serialize the projects
+
+class ChallengeDetailView(generics.RetrieveAPIView):
+    queryset = Projekt.objects.all()
+    serializer_class = ProjektSerializer
+
+    def get_object(self):
+        """
+        Retrieve a challenge instance based on the ID provided in the URL.
+        If the challenge with the given ID does not exist, raise a NotFound exception.
+        """
+        challenge_id = self.kwargs.get('pk')
+        try:
+            return Projekt.objects.get(pk=challenge_id)
+        except Projekt.DoesNotExist:
+            raise NotFound("Challenge does not exist")
+
+class PredmetListView(generics.ListAPIView):
+    queryset = Predmet.objects.all()  # Fetch all subjects from the database
+    serializer_class = PredmetSerializer  # Use the serializer to serialize the subjects
+
+class TagListView(generics.ListAPIView):
+    queryset = Tag.objects.all()  # Fetch all tags from the database
+    serializer_class = TagSerializer  # Use the serializer to serialize the tags
