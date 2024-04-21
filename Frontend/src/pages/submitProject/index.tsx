@@ -31,163 +31,154 @@ import { z } from 'zod';
 
 const fakultete = [
     {
-        value: 'Faculty of Mathematics and Physics',
+        value: '1',
         label: 'Faculty of Mathematics and Physics',
     },
     {
-        value: 'Faculty of Computer and Information Science',
+        value: '2',
         label: 'Faculty of Computer and Information Science',
     },
     {
-        value: 'Faculty of Mechanical Engineering',
+        value: '3',
         label: 'Faculty of Mechanical Engineering',
     },
     {
-        value: 'Faculty of Civil and Geodetic Engineering',
+        value: '4',
         label: 'Faculty of Civil and Geodetic Engineering',
     },
     {
-        value: 'Faculty of Electrical Engineering',
+        value: '5',
         label: 'Faculty of Electrical Engineering',
     },
     {
-        value: 'Faculty of Chemistry and Chemical Technology',
+        value: '6',
         label: 'Faculty of Chemistry and Chemical Technology',
     },
     {
-        value: 'Faculty of Natural Sciences',
+        value: '7',
         label: 'Faculty of Natural Sciences',
     },
     {
-        value: 'Faculty of Biotechnology',
+        value: '8',
         label: 'Faculty of Biotechnology',
     },
     {
-        value: 'Faculty of Pharmacy',
+        value: '9',
         label: 'Faculty of Pharmacy',
     },
     {
-        value: 'Faculty of Medicine',
+        value: '10',
         label: 'Faculty of Medicine',
     },
     {
-        value: 'Faculty of Veterinary Medicine',
+        value: '11',
         label: 'Faculty of Veterinary Medicine',
     },
     {
-        value: 'Faculty of Agriculture and Life Sciences',
+        value: '12',
         label: 'Faculty of Agriculture and Life Sciences',
     },
     {
-        value: 'Faculty of Environmental Protection',
+        value: '13',
         label: 'Faculty of Environmental Protection',
     },
     {
-        value: 'Faculty of Geosciences',
+        value: '14',
         label: 'Faculty of Geosciences',
     },
 ];
 const tags = [
-    { value: 'mechanical-engineering', label: 'Mechanical Engineering' },
-    { value: 'electrical-engineering', label: 'Electrical Engineering' },
-    { value: 'computer-engineering', label: 'Computer Engineering' },
-    { value: 'civil-engineering', label: 'Civil Engineering' },
-    { value: 'aerospace-engineering', label: 'Aerospace Engineering' },
-    { value: 'biomedical-engineering', label: 'Biomedical Engineering' },
-    { value: 'chemical-engineering', label: 'Chemical Engineering' },
-    { value: 'materials-science', label: 'Materials Science' },
-    { value: 'robotics', label: 'Robotics' },
-    { value: 'mechatronics', label: 'Mechatronics' },
-    { value: 'artificial-intelligence', label: 'Artificial Intelligence' },
-    { value: 'machine-learning', label: 'Machine Learning' },
-    { value: 'data-science', label: 'Data Science' },
-    { value: 'software-engineering', label: 'Software Engineering' },
-    { value: 'computer-vision', label: 'Computer Vision' },
-    {
-        value: 'natural-language-processing',
-        label: 'Natural Language Processing',
-    },
-    {
-        value: 'human-computer-interaction',
-        label: 'Human-Computer Interaction',
-    },
-    { value: 'cybersecurity', label: 'Cybersecurity' },
-    { value: 'database-systems', label: 'Database Systems' },
-    { value: 'networking', label: 'Networking' },
-    { value: 'biology', label: 'Biology' },
-    { value: 'chemistry', label: 'Chemistry' },
-    { value: 'physics', label: 'Physics' },
-    { value: 'mathematics', label: 'Mathematics' },
-    { value: 'environmental-science', label: 'Environmental Science' },
-    { value: 'ecology', label: 'Ecology' },
-    { value: 'genetics', label: 'Genetics' },
-    { value: 'microbiology', label: 'Microbiology' },
-    { value: 'neuroscience', label: 'Neuroscience' },
-    { value: 'statistics', label: 'Statistics' },
-    { value: 'pure-mathematics', label: 'Pure Mathematics' },
-    { value: 'applied-mathematics', label: 'Applied Mathematics' },
-    { value: 'statistics', label: 'Statistics' },
-    { value: 'actuarial-science', label: 'Actuarial Science' },
-    { value: 'mathematical-physics', label: 'Mathematical Physics' },
-    { value: 'computational-mathematics', label: 'Computational Mathematics' },
-    { value: 'numerical-analysis', label: 'Numerical Analysis' },
-    { value: 'algebra', label: 'Algebra' },
-    { value: 'geometry', label: 'Geometry' },
-    { value: 'topology', label: 'Topology' },
-    { value: 'anatomy', label: 'Anatomy' },
-    { value: 'biochemistry', label: 'Biochemistry' },
-    { value: 'microbiology', label: 'Microbiology' },
-    { value: 'pharmacology', label: 'Pharmacology' },
-    { value: 'physiology', label: 'Physiology' },
-    { value: 'public-health', label: 'Public Health' },
-    { value: 'epidemiology', label: 'Epidemiology' },
-    { value: 'health-informatics', label: 'Health Informatics' },
-    { value: 'medical-imaging', label: 'Medical Imaging' },
-    { value: 'pharmaceutics', label: 'Pharmaceutics' },
-    { value: 'pharmacology', label: 'Pharmacology' },
-    { value: 'pharmaceutical-chemistry', label: 'Pharmaceutical Chemistry' },
-    { value: 'pharmacognosy', label: 'Pharmacognosy' },
-    { value: 'clinical-pharmacy', label: 'Clinical Pharmacy' },
-    { value: 'pharmacy-practice', label: 'Pharmacy Practice' },
-    { value: 'medicinal-chemistry', label: 'Medicinal Chemistry' },
-    { value: 'drug-delivery', label: 'Drug Delivery' },
-    { value: 'animal-science', label: 'Animal Science' },
-    { value: 'veterinary-medicine', label: 'Veterinary Medicine' },
-    { value: 'animal-health', label: 'Animal Health' },
-    { value: 'zoonotic-diseases', label: 'Zoonotic Diseases' },
-    { value: 'veterinary-pharmacology', label: 'Veterinary Pharmacology' },
-    { value: 'animal-behavior', label: 'Animal Behavior' },
-    { value: 'wildlife-conservation', label: 'Wildlife Conservation' },
-    { value: 'animal-welfare', label: 'Animal Welfare' },
+    { value: 1, label: 'Mechanical Engineering' },
+    { value: 2, label: 'Electrical Engineering' },
+    { value: 3, label: 'Computer Engineering' },
+    { value: 4, label: 'Civil Engineering' },
+    { value: 5, label: 'Aerospace Engineering' },
+    { value: 6, label: 'Biomedical Engineering' },
+    { value: 7, label: 'Chemical Engineering' },
+    { value: 8, label: 'Materials Science' },
+    { value: 9, label: 'Robotics' },
+    { value: 10, label: 'Mechatronics' },
+    { value: 11, label: 'Artificial Intelligence' },
+    { value: 12, label: 'Machine Learning' },
+    { value: 13, label: 'Data Science' },
+    { value: 14, label: 'Software Engineering' },
+    { value: 15, label: 'Computer Vision' },
+    { value: 16, label: 'Natural Language Processing' },
+    { value: 17, label: 'Human-Computer Interaction' },
+    { value: 18, label: 'Cybersecurity' },
+    { value: 19, label: 'Database Systems' },
+    { value: 20, label: 'Networking' },
+    { value: 21, label: 'Biology' },
+    { value: 22, label: 'Chemistry' },
+    { value: 23, label: 'Physics' },
+    { value: 24, label: 'Mathematics' },
+    { value: 25, label: 'Environmental Science' },
+    { value: 26, label: 'Ecology' },
+    { value: 27, label: 'Genetics' },
+    { value: 28, label: 'Microbiology' },
+    { value: 29, label: 'Neuroscience' },
+    { value: 30, label: 'Statistics' },
+    { value: 31, label: 'Pure Mathematics' },
+    { value: 32, label: 'Applied Mathematics' },
+    { value: 33, label: 'Actuarial Science' },
+    { value: 34, label: 'Mathematical Physics' },
+    { value: 35, label: 'Computational Mathematics' },
+    { value: 36, label: 'Numerical Analysis' },
+    { value: 37, label: 'Algebra' },
+    { value: 38, label: 'Geometry' },
+    { value: 39, label: 'Topology' },
+    { value: 40, label: 'Anatomy' },
+    { value: 41, label: 'Biochemistry' },
+    { value: 42, label: 'Pharmacology' },
+    { value: 43, label: 'Physiology' },
+    { value: 44, label: 'Public Health' },
+    { value: 45, label: 'Epidemiology' },
+    { value: 46, label: 'Health Informatics' },
+    { value: 47, label: 'Medical Imaging' },
+    { value: 48, label: 'Pharmaceutics' },
+    { value: 49, label: 'Pharmaceutical Chemistry' },
+    { value: 50, label: 'Pharmacognosy' },
+    { value: 51, label: 'Clinical Pharmacy' },
+    { value: 52, label: 'Pharmacy Practice' },
+    { value: 53, label: 'Medicinal Chemistry' },
+    { value: 54, label: 'Drug Delivery' },
+    { value: 55, label: 'Animal Science' },
+    { value: 56, label: 'Veterinary Medicine' },
+    { value: 57, label: 'Animal Health' },
+    { value: 58, label: 'Zoonotic Diseases' },
+    { value: 59, label: 'Veterinary Pharmacology' },
+    { value: 60, label: 'Animal Behavior' },
+    { value: 61, label: 'Wildlife Conservation' },
+    { value: 62, label: 'Animal Welfare' },
 ];
 
 const subject = [
     {
-        value: 'programming-fundamentals',
+        value: '1',
         label: 'Programming Fundamentals',
     },
     {
-        value: 'data-structures-and-algorithms',
+        value: '2',
         label: 'Data Structures and Algorithms',
     },
     {
-        value: 'computer-systems-and-architecture',
+        value: '3',
         label: 'Computer Systems and Architecture',
     },
     {
-        value: 'operating-systems',
+        value: '4',
         label: 'Operating Systems',
     },
     {
-        value: 'database-systems',
+        value: '5',
         label: 'Database Systems',
     },
     {
-        value: 'computer-networks',
+        value: '6',
         label: 'Computer Networks',
     },
     {
-        value: 'software-engineering',
+        value: '7',
         label: 'Software Engineering',
     },
 ];
@@ -196,7 +187,7 @@ const formSchema = z.object({
     name: z.string().min(1).max(100),
     fakulteta: z.string().min(1).max(100),
     subject: z.string().min(1).max(100),
-    tags: z.array(z.string().min(1).max(100)),
+    tags: z.array(z.number()),
     description: z.string().min(100),
 });
 function SubmitProject() {
@@ -214,6 +205,43 @@ function SubmitProject() {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values);
+
+        // send the data to http://127.0.0.1:8000/api/project_add/
+        // this is the format that the api expects
+        // {
+        //     "title": "",
+        //     "description": "",
+        //     "podjetje": "",
+        //     "tags": [],
+        //     "faks": null,
+        //     "created_by": null,
+        //     "predmet": null
+        // }
+
+        let outputData = {
+            title: values.name,
+            description: values.description,
+            podjetje: 'zeroDays',
+            tags: values.tags,
+            faks: values.fakulteta,
+            created_by: 1,
+            predmet: values.subject,
+        };
+
+        fetch('http://127.0.0.1:8000/api/project_add/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(outputData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
     return (
         <div className="justify-items-center">
@@ -358,7 +386,7 @@ function SubmitProject() {
                                                         No subject found.
                                                     </CommandEmpty>
                                                     <CommandGroup>
-                                                        {fakultete.map(
+                                                        {subject.map(
                                                             (subject) => (
                                                                 <CommandItem
                                                                     value={
@@ -369,7 +397,7 @@ function SubmitProject() {
                                                                     }
                                                                     onSelect={() => {
                                                                         form.setValue(
-                                                                            'fakulteta',
+                                                                            'subject',
                                                                             subject.value
                                                                         );
                                                                         console.log(
