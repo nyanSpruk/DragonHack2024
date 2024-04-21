@@ -24,7 +24,7 @@ export default function Projects() {
     return (
         <div className="flex h-full flex-col items-center p-8 gap-8">
             <h1 className="text-lg">Projects</h1>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
+            <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-8 ">
                 {projects.map((project) => (
                     <a href={`/project/${project.id}`}>
                         <Button
