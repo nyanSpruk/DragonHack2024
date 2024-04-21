@@ -47,6 +47,7 @@ class Projekt(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     overview = models.TextField(default="aaaaa")
+    email = models.TextField(default="nekaj@gmail.com")
     podjetje = models.CharField(max_length=200)
     tags = models.ManyToManyField(Tag)
     faks = models.ForeignKey(College, on_delete=models.CASCADE) 
