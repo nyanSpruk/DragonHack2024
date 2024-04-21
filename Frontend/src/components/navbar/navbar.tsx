@@ -5,7 +5,7 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { getLogStatus } from '@/lib/auth';
+import { getLogStatus, getUser } from '@/lib/auth';
 import { UserNav } from './user-nav';
 
 const Navbar = () => {
@@ -28,32 +28,42 @@ const Navbar = () => {
                                     </a>
                                 </NavigationMenuItem>
                             )}
+                            {getLogStatus() &&
+                                getUser() === 'student@student.si' && (
+                                    <>
+                                        <NavigationMenuItem>
+                                            <a href="/predmeti">
+                                                <NavigationMenuLink
+                                                    className={navigationMenuTriggerStyle()}>
+                                                    Predmeti
+                                                </NavigationMenuLink>
+                                            </a>
+                                        </NavigationMenuItem>
+                                    </>
+                                )}
+                            {getLogStatus() &&
+                                getUser() === 'zerodays@zerodays.si' && (
+                                    <>
+                                        {/* <NavigationMenuItem>
+                                            <a href="/submitProblem">
+                                                <NavigationMenuLink
+                                                    className={navigationMenuTriggerStyle()}>
+                                                    Submit Problem
+                                                </NavigationMenuLink>
+                                            </a>
+                                        </NavigationMenuItem> */}
+                                        <NavigationMenuItem>
+                                            <a href="/submitProject">
+                                                <NavigationMenuLink
+                                                    className={navigationMenuTriggerStyle()}>
+                                                    Submit Project
+                                                </NavigationMenuLink>
+                                            </a>
+                                        </NavigationMenuItem>
+                                    </>
+                                )}
                             {getLogStatus() && (
                                 <>
-                                    <NavigationMenuItem>
-                                        <a href="/predmeti">
-                                            <NavigationMenuLink
-                                                className={navigationMenuTriggerStyle()}>
-                                                Predmeti
-                                            </NavigationMenuLink>
-                                        </a>
-                                    </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <a href="/submitProblem">
-                                    <NavigationMenuLink
-                                        className={navigationMenuTriggerStyle()}>
-                                        Submit Problem
-                                    </NavigationMenuLink>
-                                </a>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <a href="/submitProject">
-                                    <NavigationMenuLink
-                                        className={navigationMenuTriggerStyle()}>
-                                        Submit Project
-                                    </NavigationMenuLink>
-                                </a>
-                            </NavigationMenuItem>
                                     <NavigationMenuItem>
                                         <UserNav />
                                     </NavigationMenuItem>
