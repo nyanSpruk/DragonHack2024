@@ -24,26 +24,29 @@ class College(models.Model):
     def __str__(self):
         return f"{self.name} - {self.location}"
 
-class Predmet(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    college = models.ForeignKey(College, on_delete=models.CASCADE, related_name="subjects")
-
-    def __str__(self):
-        return self.title
-
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name
 
+class Predmet(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    tags = models.ManyToManyField(Tag)
+    college = models.ForeignKey(College, on_delete=models.CASCADE, related_name="subjects")
+
+    def __str__(self):
+        return self.title
+
+
+
 class Projekt(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    podjetje = models.CharField(max_length=200)  
+    podjetje = models.CharField(max_length=200)
     tags = models.ManyToManyField(Tag)
-    faks = models.CharField(max_length=200)  
+    faks = models.ForeignKey(College, on_delete=models.CASCADE) 
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     predmet = models.ForeignKey(Predmet, on_delete=models.CASCADE)
 

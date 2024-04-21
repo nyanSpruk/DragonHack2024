@@ -13,7 +13,7 @@ urlpatterns = [
     path('tags/<int:pk>/', views.TagDetailView.as_view(), name='tag-detail'),
     path('projects/<int:pk>/', views.ProjektDetailView.as_view(), name='project-detail'),
     path('projects-by-subject/<int:predmet_id>/', views.ProjectsBySubjectListView.as_view(), name='projects-by-subject'),
-    # Include other URLs as needed
+    
 ]
 
 
