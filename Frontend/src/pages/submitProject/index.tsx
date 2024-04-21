@@ -189,6 +189,8 @@ const formSchema = z.object({
     subject: z.string().min(1).max(100),
     tags: z.array(z.number()),
     description: z.string().min(100),
+    objective: z.string().min(100),
+    email: z.string().min(1).max(100),
 });
 function SubmitProject() {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -542,7 +544,7 @@ function SubmitProject() {
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
                                         <Textarea
-                                            placeholder="Describe your project in detail to optimize student and class matching."
+                                            placeholder="Describe your subject and project in detail to match with the right companies."
                                             className="resize-none"
                                             {...field}
                                         />

@@ -42,7 +42,9 @@ function Project() {
                     <CardHeader className="text-3xl">{data.title}</CardHeader>
                     <Separator className="mb-4" />
                     <CardContent>
-                        <h2 className="text-xl font-semibold">Overview</h2>
+                        <h2 className="text-xl font-semibold">
+                            Company Overview:
+                        </h2>
                         <p>{data.overview}</p>
                         <br></br>
                         <h2 className="text-xl font-semibold">Objective:</h2>

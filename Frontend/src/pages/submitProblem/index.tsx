@@ -165,6 +165,7 @@ const formSchema = z.object({
     fakulteta: z.string().min(1).max(100),
     tags: z.array(z.string().min(1).max(100)),
     description: z.string().min(1),
+    objective: z.string().min(1),
 });
 function SubmitProblem() {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -174,6 +175,7 @@ function SubmitProblem() {
             fakulteta: '',
             tags: [],
             description: '',
+            objective: '',
         },
     });
     function onSubmit(values: z.infer<typeof formSchema>) {
@@ -193,7 +195,7 @@ function SubmitProblem() {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Problem name</FormLabel>
+                                    <FormLabel>Problem title</FormLabel>
                                     <FormControl>
                                         <Input
                                             placeholder="concise and descriptive, for example: testing smart home solutions"
@@ -401,7 +403,24 @@ function SubmitProblem() {
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
                                         <Textarea
-                                            placeholder="Describe your project in detail to optimize student and class matching."
+                                            placeholder="Briefly describe your company and what you do."
+                                            className="resize-none"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="objective"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Objective</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Describe your problem and what you expect the student to do."
                                             className="resize-none"
                                             {...field}
                                         />
