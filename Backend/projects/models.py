@@ -42,10 +42,11 @@ class Predmet(models.Model):
     def __str__(self):
         return self.title
 
-# Projekt model with title, description, company, tags, college, created_by, and predmet
+# Professor - Projekt model with title, description, company, tags, college, created_by, and predmet
 class Projekt(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
+    overview = models.TextField(default="aaaaa")
     podjetje = models.CharField(max_length=200)
     tags = models.ManyToManyField(Tag)
     faks = models.ForeignKey(College, on_delete=models.CASCADE) 

@@ -166,3 +166,27 @@ class PredmetListView(generics.ListAPIView):
 class TagListView(generics.ListAPIView):
     queryset = Tag.objects.all()  # Fetch all tags from the database
     serializer_class = TagSerializer  # Use the serializer to serialize the tags
+
+class UserAttendsSubjectUpdateView(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()  # Get the user object
+
+        # Check if 'attends_subjects' are provided in the request data
+        if 'attends_subjects' not in request.data:
+            return Response({'message': 'attends_subjects must be provided'}, status=status.HTTP_400_BAD_REQUEST)
+
+        attends_subject_ids = request.data.get('attends_subjects')
+
+        # Validate subject IDs
+        subjects = Predmet.objects.filter(pk__in=attends_subject_ids)
+        if len(subjects) != len(attends_subject_ids):
+            return Response({'message': 'Invalid subject ID(s) provided'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Set the attended subjects for the user
+        user.attends_subjects.set(subjects)
+        user.save()
+
+        return Response({'message': 'Attended subjects updated successfully'}, status=status.HTTP_200_OK)
