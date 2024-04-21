@@ -18,8 +18,17 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { setIsLoggedIn } from '@/lib/auth';
+import { useNavigate } from 'react-router';
 
 function Login() {
+    const navigate = useNavigate();
+
+    function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
+        setIsLoggedIn(true);
+        navigate('/predmeti');
+        location.reload();
+    }
     return (
         <div className="flex justify-center items-center h-full">
             <Tabs defaultValue="login" className="w-[400px]">
@@ -28,30 +37,32 @@ function Login() {
                     <TabsTrigger value="signup">Sign up</TabsTrigger>
                 </TabsList>
                 <TabsContent value="login">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Login</CardTitle>
-                            <CardDescription>
-                                Login into your account.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="space-y-1">
-                                <Label htmlFor="username">Username</Label>
-                                <Input
-                                    id="username"
-                                    placeholder="Ducklas.Mallard"
-                                />
-                            </div>
-                            <div className="space-y-1">
-                                <Label htmlFor="password">Password</Label>
-                                <Input id="password" type="password" />
-                            </div>
-                        </CardContent>
-                        <CardFooter>
-                            <Button>Login</Button>
-                        </CardFooter>
-                    </Card>
+                    <form onSubmit={handleSubmit}>
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Login</CardTitle>
+                                <CardDescription>
+                                    Login into your account.
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-2">
+                                <div className="space-y-1">
+                                    <Label htmlFor="username">Username</Label>
+                                    <Input
+                                        id="username"
+                                        placeholder="Ducklas.Mallard"
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input id="password" type="password" />
+                                </div>
+                            </CardContent>
+                            <CardFooter>
+                                <Button>Login</Button>
+                            </CardFooter>
+                        </Card>
+                    </form>
                 </TabsContent>
                 <TabsContent value="signup">
                     <Card>
