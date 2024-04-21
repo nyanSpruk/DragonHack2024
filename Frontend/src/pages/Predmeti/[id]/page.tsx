@@ -16,7 +16,7 @@ function Predmet() {
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <div className="p-8 sm:w-2/3 ">
+            {/* <div className="p-8 sm:w-2/3 ">
                 <h1 className="text-2xl font-bold">{data.title}</h1>
                 <br></br>
                 <h2 className="text-xl font-semibold">Overview</h2>
@@ -28,7 +28,7 @@ function Predmet() {
                 <p>Email: {data.email}</p>
                 <br></br>
                 <Button>Apply for project</Button>
-            </div>
+            </div> */}
         </div>
     );
 }
