@@ -21,14 +21,24 @@ import {
 import { setIsLoggedIn } from '@/lib/auth';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
+import { useToast } from '@/components/ui/use-toast';
 
 function Login() {
+    const { toast } = useToast();
     const navigate = useNavigate();
     const [name, setName] = useState('');
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
         console.log(name);
-        setIsLoggedIn(true);
+        if (name !== 'student@student.si' && name !== 'zerodays@zerodays.si') {
+            toast({
+                variant: 'destructive',
+                title: 'Invalid Login',
+                description: 'Please enter valid credentials.',
+            });
+            return;
+        }
+        setIsLoggedIn(name);
 
         navigate('/predmeti');
         location.reload();
