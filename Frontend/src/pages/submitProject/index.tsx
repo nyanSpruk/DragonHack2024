@@ -189,6 +189,8 @@ const formSchema = z.object({
     subject: z.string().min(1).max(100),
     tags: z.array(z.number()),
     description: z.string().min(100),
+    objective: z.string().min(100),
+    email: z.string().min(1).max(100),
 });
 function SubmitProject() {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -199,6 +201,8 @@ function SubmitProject() {
             subject: '',
             tags: [],
             description: '',
+            objective: '',
+            email: '',
         },
     });
     function onSubmit(values: z.infer<typeof formSchema>) {
@@ -539,11 +543,44 @@ function SubmitProject() {
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Description</FormLabel>
+                                    <FormLabel>Company Description</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Briefly describe your company and what you do."
+                                            className="resize-none"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="objective"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Objective</FormLabel>
                                     <FormControl>
                                         <Textarea
                                             placeholder="Describe your project in detail to optimize student and class matching."
                                             className="resize-none"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Email</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="example@email.com"
                                             {...field}
                                         />
                                     </FormControl>
