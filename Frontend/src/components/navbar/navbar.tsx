@@ -5,6 +5,8 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
+import { getLogStatus } from '@/lib/auth';
+import { UserNav } from './user-nav';
 
 const Navbar = () => {
     return (
@@ -16,22 +18,26 @@ const Navbar = () => {
                 <div className="ml-auto">
                     <NavigationMenu>
                         <NavigationMenuList>
-                            <NavigationMenuItem>
-                                <a href="/login">
-                                    <NavigationMenuLink
-                                        className={navigationMenuTriggerStyle()}>
-                                        Login
-                                    </NavigationMenuLink>
-                                </a>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <a href="/predmeti">
-                                    <NavigationMenuLink
-                                        className={navigationMenuTriggerStyle()}>
-                                        Predmeti
-                                    </NavigationMenuLink>
-                                </a>
-                            </NavigationMenuItem>
+                            {!getLogStatus() && (
+                                <NavigationMenuItem>
+                                    <a href="/login">
+                                        <NavigationMenuLink
+                                            className={navigationMenuTriggerStyle()}>
+                                            Login
+                                        </NavigationMenuLink>
+                                    </a>
+                                </NavigationMenuItem>
+                            )}
+                            {getLogStatus() && (
+                                <>
+                                    <NavigationMenuItem>
+                                        <a href="/predmeti">
+                                            <NavigationMenuLink
+                                                className={navigationMenuTriggerStyle()}>
+                                                Predmeti
+                                            </NavigationMenuLink>
+                                        </a>
+                                    </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <a href="/submitProblem">
                                     <NavigationMenuLink
@@ -48,6 +54,11 @@ const Navbar = () => {
                                     </NavigationMenuLink>
                                 </a>
                             </NavigationMenuItem>
+                                    <NavigationMenuItem>
+                                        <UserNav />
+                                    </NavigationMenuItem>
+                                </>
+                            )}
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>

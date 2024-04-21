@@ -46,7 +46,7 @@ export default function Predmeti() {
             <h1 className="text-lg">Predmeti</h1>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
                 {subjects.map((subject) => (
-                    <a href={`/predmet/${subject.id}`}>
+                    <a href={`/projects/${subject.id}`}>
                         <Button
                             key={subject.id}
                             className="w-64 h-24"
