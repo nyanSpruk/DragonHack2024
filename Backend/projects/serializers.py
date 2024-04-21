@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Projekt, Predmet, College, Tag
+from .models import User, Projekt, Predmet, College, Tag, Predlog
 
 
 class PredmetSerializer(serializers.ModelSerializer):
@@ -41,4 +41,10 @@ class ProjektSerializer(serializers.ModelSerializer):
     class Meta:
         model = Projekt
         fields = ['id', 'title', 'description', 'overview', 'podjetje', 'tags', 'faks', 'created_by', 'predmet']
+    
+
+class PredlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Predlog
+        fields = '__all__'  # Serialize all fields of the Predlog model
 

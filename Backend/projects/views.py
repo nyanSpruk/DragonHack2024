@@ -190,3 +190,26 @@ class UserAttendsSubjectUpdateView(generics.UpdateAPIView):
         user.save()
 
         return Response({'message': 'Attended subjects updated successfully'}, status=status.HTTP_200_OK)
+
+from rest_framework import generics
+from .models import Predlog
+from .serializers import PredlogSerializer
+
+class PredlogListView(generics.ListAPIView):
+    queryset = Predlog.objects.all()  # Fetch all Predlog objects from the database
+    serializer_class = PredlogSerializer  # Use the serializer to serialize the Predlog objects
+
+class PredlogCreateView(generics.CreateAPIView):
+    queryset = Predlog.objects.all()
+    serializer_class = PredlogSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+class PredlogRetrieveView(generics.RetrieveAPIView):
+    queryset = Predlog.objects.all()
+    serializer_class = PredlogSerializer

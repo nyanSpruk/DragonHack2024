@@ -7,7 +7,7 @@ urlpatterns = [
     path('user_add/', views.UserListCreateView.as_view(), name='user-list-create'),
 
     # Add project (user, college, subject, tags, company, title, description)
-    path('project_add/', views.ProjektCreateView.as_view(), name='project-add'),
+    path('challenge_add/', views.ProjektCreateView.as_view(), name='project-add'),
 
     # Add subject (title, description, tags, college)
     path('subject_add/', views.PredmetCreateView.as_view(), name='predmet-add'),
@@ -47,10 +47,17 @@ urlpatterns = [
 
     path('challenges/<int:pk>/', views.ChallengeDetailView.as_view(), name='challenge-detail'),
 
+    path('predlogs/', views.PredlogListView.as_view(), name='predlog-list'),
+
     path('subjects_get/', views.PredmetListView.as_view(), name='subject-list'),
 
     path('tags_get/', views.TagListView.as_view(), name='tag-list'),
 
     path('users/<int:pk>/update-attends-subjects/', views.UserAttendsSubjectUpdateView.as_view(), name='user-update-attends-subjects'),
+
+    path('predlogs/add/', views.PredlogCreateView.as_view(), name='predlog-create'),
+
+    path('predlogs/<int:pk>/', views.PredlogRetrieveView.as_view(), name='predlog-retrieve'),
+
 
 ]
