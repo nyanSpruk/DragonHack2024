@@ -5,13 +5,16 @@ Connecting universities and companies through student projects. Students can app
   
 ## Installation: ##
 
-cd Frontend<br>
 **frontend**:<br>
-1.```npm install```<br>
-2. run localhost:5173<br>
+1. ```cd Frontend```
+2. ```npm install```
+3. ```npm run dev```
+4. ```run localhost:5173```
   
 **backend**:<br>
-```npm run dev```
+1. ```cd Backend```
+2. ```pip3 install -r requirements.txt```
+3. ```python3 manage.py runserver``` 
 
 ## Features: ##
 ### for professors: ###
