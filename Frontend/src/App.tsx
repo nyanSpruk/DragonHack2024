@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/home';
-import About from './pages/about/about';
+import SubmitProblem from './pages/submitProblem';
 import Navbar from './components/navbar/navbar';
 import NotFound from './components/notfound/notfound';
 import Predmeti from './pages/Predmeti/predmeti';
 import Login from './pages/login/login';
 import Predmet from './pages/Predmeti/[id]/page';
+import SubmitProject from './pages/submitProject';
 import Projects from './pages/projects/projects';
 import Project from './pages/projects/[id]/page';
 import { Toaster } from './components/ui/toaster';
@@ -18,7 +19,8 @@ function App() {
                 <Toaster />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/submitProblem" element={<SubmitProblem />} />
+                    <Route path="/submitProject" element={<SubmitProject />} />
                     <Route path="/predmeti" element={<Predmeti />} />
                     <Route path="/predmet/:id" element={<Predmet />} />
                     <Route path="/projects/:id" element={<Projects />} />

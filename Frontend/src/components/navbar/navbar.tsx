@@ -38,6 +38,22 @@ const Navbar = () => {
                                             </NavigationMenuLink>
                                         </a>
                                     </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <a href="/submitProblem">
+                                    <NavigationMenuLink
+                                        className={navigationMenuTriggerStyle()}>
+                                        Submit Problem
+                                    </NavigationMenuLink>
+                                </a>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <a href="/submitProject">
+                                    <NavigationMenuLink
+                                        className={navigationMenuTriggerStyle()}>
+                                        Submit Project
+                                    </NavigationMenuLink>
+                                </a>
+                            </NavigationMenuItem>
                                     <NavigationMenuItem>
                                         <UserNav />
                                     </NavigationMenuItem>
