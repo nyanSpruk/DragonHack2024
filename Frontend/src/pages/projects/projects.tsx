@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 type Subject = {
     title: string;
     id: number;
+    podjetje: string;
 };
 export default function Projects() {
     const { id } = useParams();
@@ -30,7 +31,7 @@ export default function Projects() {
                             key={subject.id}
                             className="w-64 h-24 text-wrap"
                             variant={'secondary'}>
-                            {subject.title}
+                            {subject.podjetje} : {subject.title}
                         </Button>
                     </a>
                 ))}
